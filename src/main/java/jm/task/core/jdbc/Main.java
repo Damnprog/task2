@@ -6,15 +6,16 @@ import jm.task.core.jdbc.service.UserServiceImpl;
 
 import java.util.List;
 
+
 public class Main {
     public static void main(String[] args) {
         UserService userService = new UserServiceImpl();
         userService.createUsersTable();
 
-        userService.saveUser("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", (byte) 20);
-        userService.saveUser("пїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", (byte) 21);
-        userService.saveUser("пїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", (byte) 22);
-        userService.saveUser("пїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", (byte) 23);
+        userService.saveUser("Alex", "Alexeev", (byte) 20);
+        userService.saveUser("Петр", "Петров", (byte) 21);
+        userService.saveUser("Андрей", "Андреев", (byte) 22);
+        userService.saveUser("Сергей", "Сергеев", (byte) 23);
 
         List<User> users = userService.getAllUsers();
         for (User user : users) {

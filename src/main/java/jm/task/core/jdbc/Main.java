@@ -13,9 +13,9 @@ public class Main {
         userService.createUsersTable();
 
         userService.saveUser("Alex", "Alexeev", (byte) 20);
-        userService.saveUser("Петр", "Петров", (byte) 21);
-        userService.saveUser("Андрей", "Андреев", (byte) 22);
-        userService.saveUser("Сергей", "Сергеев", (byte) 23);
+        userService.saveUser("РџРµС‚СЂ", "РџРµС‚СЂРѕРІ", (byte) 21);
+        userService.saveUser("РЎРµСЂРіРµР№", "РЎРµСЂРіРµРµРІ", (byte) 22);
+        userService.saveUser("РђР»РµРєСЃРµР№", "РђР»РµРєСЃРµРµРІ", (byte) 23);
 
         List<User> users = userService.getAllUsers();
         for (User user : users) {

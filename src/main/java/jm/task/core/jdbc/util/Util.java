@@ -50,7 +50,7 @@ public class Util {
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);
             } catch (Exception e) {
                 e.printStackTrace();
-                throw new RuntimeException("Ошибка создания SessionFactory", e);
+                throw new RuntimeException("РѕС€РёР±РєР° SessionFactory", e);
             }
         }
         return sessionFactory;

@@ -9,17 +9,11 @@ import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
     public UserDaoHibernateImpl() {
-
     }
-
 
     @Override
     public void createUsersTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS users (" +
-                "id BIGINT PRIMARY KEY AUTO_INCREMENT, " +
-                "name VARCHAR(50) NOT NULL, " +
-                "lastName VARCHAR(50) NOT NULL, " +
-                "age TINYINT)";
+        String sql = "CREATE TABLE IF NOT EXISTS users (" + "id BIGINT PRIMARY KEY AUTO_INCREMENT, " + "name VARCHAR(50) NOT NULL, " + "lastName VARCHAR(50) NOT NULL, " + "age TINYINT)";
         try (Session session = Util.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             session.createNativeQuery(sql).executeUpdate();

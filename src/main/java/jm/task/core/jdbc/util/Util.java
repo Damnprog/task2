@@ -1,21 +1,26 @@
 package jm.task.core.jdbc.util;
 
-import org.hibernate.SessionFactory;
 import jm.task.core.jdbc.model.User;
+import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Environment;
-
-import org.hibernate.service.ServiceRegistry;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.Environment;
+import org.hibernate.service.ServiceRegistry;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class Util {
+public final class Util {
     private static final String URL = "jdbc:mysql://localhost:3306/userdb?useSSL=false&serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASSWORD = "DAMIRdamir11";
+
+    private Util() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     public static Connection getConnection() {
         Connection connection = null;
         try {
@@ -27,6 +32,7 @@ public class Util {
     }
 
     private static SessionFactory sessionFactory;
+
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
@@ -45,8 +51,7 @@ public class Util {
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
 
-                ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().
-                        applySettings(configuration.getProperties()).build();
+                ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -55,6 +60,7 @@ public class Util {
         }
         return sessionFactory;
     }
+
     public static void shutdown() {
         if (sessionFactory != null) {
             sessionFactory.close();
